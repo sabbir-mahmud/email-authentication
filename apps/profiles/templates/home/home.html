@@ -1,15 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <style>
+        .container{
+            width:90%;
+            margin:auto;
+        }
+        .img-wrapper {
+            width: 450px;
+            height: 300px;
+            overflow: hidden;
+            border-radius:5px;
+        }
+
+        .img-wrapper img {
+            width: 100%;
+        }
+    </style>
 </head>
+
 <body>
-    <header>
-        <h1>This is home page</h1>
-        <a href="{% url 'log-out' %}">log out</a>
-    </header>
+    <div class="container">
+        <div class="user-profile-wrapper">
+            <div class="img-wrapper">
+                <img src="{{user.avatar.url}}" alt="" srcset="">
+            </div>
+            <div class="user-info">
+                <h1>{{user.user.first_name}} {{user.user.last_name}}</h1>
+                <p>{{user.user.email}}</p>
+            </div>
+            <a href="{% url 'log-out' %}">log out</a>
+            <a href="{% url 'password_change' %}">reset password</a>
+        </div>
+
 </body>
+
 </html>
